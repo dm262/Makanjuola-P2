@@ -30,8 +30,8 @@ body {
 	position: absolute;
 	z-index: 3;
 	opacity: .8;
-	right: 300px;
-    bottom: 60px;
+	right: 225px;
+    bottom: 15px;
 }
 
 .thumbnail {
@@ -52,8 +52,15 @@ body {
 }
 
 #prevPhoto {
-	height: 42px;
-	width: 42px;
+     height: 42px;
+     width: 42px;
+
+
+ }
+#prevPhoto:hover {
+    height: 42px;
+    width: 42px;
+    opacity: 0.8;
 
 
 }
@@ -62,6 +69,14 @@ body {
     float:right;
 	height: 42px;
 	width: 42px;
+
+}
+
+#nextPhoto:hover {
+    float:right;
+    height: 42px;
+    width: 42px;
+    opacity: .8;
 
 }
 

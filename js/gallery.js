@@ -37,26 +37,59 @@ function swapPhoto() {
 	//Access the img element and replace its source
 	//with a new image from your images array which is loaded 
 	//from the JSON string
+    if (mCurrentIndex > mImages.length - 1) {
+        mCurrentIndex = 0;
+    } else if (mCurrentIndex < 0) {
+        mCurrentIndex = mImages.length - 1;
 
-	$('#photo').attr("src" ,mImages[mCurrentIndex].url);
+    }
+    console.log(mCurrentIndex)
+
+    //changes html to add image descriptions
+    $('#slideShow .photoHolder img').attr('src', mImages[mCurrentIndex].imgPath);
+    $('#slideShow .details .location').text("Location: " + mImages[mCurrentIndex].imgLocation);
+    $('#slideShow .details .description ').text("Description: " + mImages[mCurrentIndex].description);
+    $('#slideShow .details .date ').text("Date: " + mImages[mCurrentIndex].date);
+
+    //console.log(mImages[0].imgPath);
     console.log('swap photo');
-
+    mCurrentIndex++;
 }
-$(document).ready(function(){
-	$('img.moreIndicator').click(function () {
-		$("img.moreIndicator").toggleClass("rot90 rot270");
-	});
-});
+$(document).ready(function () {
 
-$(document).ready(function(){
-    $('img.moreIndicator').click(function () {
-        $("div.details").slideToggle('slow');
+    // This initially hides the photos' metadata information
+    $('.details').eq(0).hide();
+
+    $("img.moreIndicator").click(function () {
+        if ($(this).hasClass("rot90")) {
+            $(this).removeClass("rot90").addClass("rot270");
+            $("div.details").fadeToggle("slow", "linear");
+        } else {
+            $(this).removeClass("rot270").addClass("rot90");
+            $("div.details").fadeToggle("slow", "linear");
+        }
     });
+
+    $("#nextPhoto").css({"position": "absolute", "right": "0"});
+
+    $("#nextPhoto").click(function () {
+        swapPhoto()
+    });
+
+    $("#prevPhoto").click(function () {
+        mCurrentIndex = mCurrentIndex - 2;
+        swapPhoto()
+    });
+
 });
 
+window.addEventListener('load', function () {
 
+    console.log('window loaded');
+
+}, false);
 // Counter for the mImages array
-var mCurrentIndex = 0;
+var mCurrentIndex = 1;
 
 // XMLHttpRequest variable
 var mRequest = new XMLHttpRequest();
@@ -97,6 +130,13 @@ mRequest.onreadystatechange = function() {
 };
 mRequest.open("GET",mUrl, true);
 mRequest.send();
+
+if ($_GET["json"] === "extra.json") {
+     mUrl = "extra.json";
+} else {
+     mUrl = "images.json";
+}
+
 //You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
 //@param A GalleryImage object. Use this method for an event handler for loading a gallery Image object (optional).
 function makeGalleryImageOnloadCallback(galleryImage) {
