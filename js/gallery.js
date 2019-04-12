@@ -48,6 +48,12 @@ $(document).ready(function(){
 	});
 });
 
+$(document).ready(function(){
+    $('img.moreIndicator').click(function () {
+        $("div.details").slideToggle('slow');
+    });
+});
+
 
 // Counter for the mImages array
 var mCurrentIndex = 0;
