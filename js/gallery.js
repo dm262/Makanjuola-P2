@@ -42,8 +42,13 @@ function swapPhoto() {
     console.log('swap photo');
 
 }
+$(document).ready(function(){
+	$('img.moreIndicator').click(function () {
+		$("img.moreIndicator").toggleClass("rot90 rot270");
+	});
+});
 
-$('.moreIndicator').siblings()
+
 // Counter for the mImages array
 var mCurrentIndex = 0;
 
@@ -109,14 +114,15 @@ window.addEventListener('load', function() {
 }, false);
 
 function GalleryImage(location,description,date,url) {
-	this.location = location;
-	this.description = description;
-	this.date = date;
-	this.url = url;
+    this.location = location;
+    this.description = description;
+    this.date = date;
+    this.url = url;
 
-	//implement me as an object to hold the following data about an image:
-	//1. location where photo was taken
-	//2. description of photo
-	//3. the date when the photo was taken
-	//4. either a String (src URL) or an an HTMLImageObject (bitmap of the photo. https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)
+
+    //implement me as an object to hold the following data about an image:
+    //1. location where photo was taken
+    //2. description of photo
+    //3. the date when the photo was taken
+    //4. either a String (src URL) or an an HTMLImageObject (bitmap of the photo. https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)
 }
