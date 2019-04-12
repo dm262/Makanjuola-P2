@@ -41,10 +41,9 @@ function swapPhoto() {
 	$('#photo').attr("src" ,mImages[mCurrentIndex].url);
     console.log('swap photo');
 
-
-
 }
 
+$('.moreIndicator').siblings()
 // Counter for the mImages array
 var mCurrentIndex = 0;
 
