@@ -57,6 +57,7 @@ body {
 }
 
 #nextPhoto {
+    float:right;
 	height: 42px;
 	width: 42px;
 }

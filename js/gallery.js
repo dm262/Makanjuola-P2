@@ -39,8 +39,10 @@ function swapPhoto() {
 	//from the JSON string
 
 	$('#photo').attr("src" ,mImages[mCurrentIndex].url);
-    mCurrentIndex++;
-	console.log('swap photo');
+    console.log('swap photo');
+
+
+
 }
 
 // Counter for the mImages array
